@@ -16,6 +16,8 @@ class LottoViewController: UIViewController {
     @IBOutlet weak var numberTextField: UITextField!
 //    @IBOutlet weak var lottoPickerView: UIPickerView!
     
+    @IBOutlet var winningNumberLabelCollection: [UILabel]!
+    
     var lottoPickerView = UIPickerView() //코드로 뷰를 짜는 기능이 훨씬 더 많이 남아있다!!
     
     let numberList: [Int] = Array(1...1025).reversed()
@@ -31,7 +33,7 @@ class LottoViewController: UIViewController {
         lottoPickerView.dataSource = self
         lottoPickerView.delegate = self
         
-        requestLotto(number: 1025)
+        requestLotto(number: 986)
     }
     
     func requestLotto(number: Int) {
@@ -39,18 +41,22 @@ class LottoViewController: UIViewController {
         //AF: 200~299 status code 성공
         let url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(number)"
         
+        var count = 0
+        
         AF.request(url, method: .get).validate(statusCode: 200..<300).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
                 print("JSON: \(json)")
                 
-                let bonus = json["bnusNo"].intValue
-                print(bonus)
+                let winningNumberArray = [json["drwtNo1"].stringValue, json["drwtNo2"].stringValue, json["drwtNo3"].stringValue, json["drwtNo4"].stringValue, json["drwtNo5"].stringValue, json["drwtNo6"].stringValue, json["bnusNo"].stringValue]
+                
+                for label in self.winningNumberLabelCollection {
+                    label.text = winningNumberArray[count]
+                    count += 1
+                }
                 
                 let date = json["drwNoDate"].stringValue
-                print(date)
-                
                 self.numberTextField.text = date
                 
             case .failure(let error):
