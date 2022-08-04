@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8pZ-2Q-1WV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zR3-6K-DGY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -420,6 +420,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vD-le-8Op" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3432" y="69"/>
+        </scene>
+        <!--Image Search View Controller-->
+        <scene sceneID="Mbk-RH-Uqb">
+            <objects>
+                <viewController id="zR3-6K-DGY" customClass="ImageSearchViewController" customModule="SeSAC2LectureNetworkBasic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j44-gN-j6Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="szv-9g-Sh6">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lyw-CA-T1L">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageSearchCollectionViewCell" id="S4x-B9-uYg" customClass="ImageSearchCollectionViewCell" customModule="SeSAC2LectureNetworkBasic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="O9b-cW-fBi">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-5F-hUN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="4NL-5F-hUN" secondAttribute="trailing" id="aTb-ml-sH2"/>
+                                                <constraint firstAttribute="bottom" secondItem="4NL-5F-hUN" secondAttribute="bottom" id="d4p-fV-bQH"/>
+                                                <constraint firstItem="4NL-5F-hUN" firstAttribute="top" secondItem="O9b-cW-fBi" secondAttribute="top" id="oPO-1O-NiC"/>
+                                                <constraint firstItem="4NL-5F-hUN" firstAttribute="leading" secondItem="O9b-cW-fBi" secondAttribute="leading" id="wIM-mo-n50"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="4NL-5F-hUN" id="Zdz-tP-qST"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="과자 리스트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yp5-zC-y9b">
+                                <rect key="frame" x="168" y="58" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Mj6-ca-ptV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="szv-9g-Sh6" firstAttribute="leading" secondItem="Mj6-ca-ptV" secondAttribute="leading" id="9SN-e1-iBz"/>
+                            <constraint firstItem="Mj6-ca-ptV" firstAttribute="bottom" secondItem="szv-9g-Sh6" secondAttribute="bottom" id="PSa-Hn-OMV"/>
+                            <constraint firstItem="yp5-zC-y9b" firstAttribute="centerX" secondItem="j44-gN-j6Z" secondAttribute="centerX" id="RAA-Y4-ODQ"/>
+                            <constraint firstItem="szv-9g-Sh6" firstAttribute="top" secondItem="yp5-zC-y9b" secondAttribute="bottom" constant="15" id="Sfr-lu-aW8"/>
+                            <constraint firstItem="szv-9g-Sh6" firstAttribute="top" secondItem="Mj6-ca-ptV" secondAttribute="top" constant="50" id="jLS-76-FDs"/>
+                            <constraint firstItem="Mj6-ca-ptV" firstAttribute="trailing" secondItem="szv-9g-Sh6" secondAttribute="trailing" id="sb3-rG-nar"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageSearchCollectionView" destination="szv-9g-Sh6" id="RQq-OB-ajY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9zL-Me-WFe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4328.985507246377" y="68.973214285714278"/>
         </scene>
     </scenes>
     <resources>
